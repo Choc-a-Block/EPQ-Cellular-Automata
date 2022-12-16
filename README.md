@@ -13,13 +13,11 @@ These rules can be used to model simple natural phenomena, such as the growth of
 ## What are the applications of cellular automata?
 
 Cellular automata can be used for a variety of purposes, including:
-* Modeling complex systems
-* Simulating physical systems
-* Generating random numbers
+* Modeling complex systems, such as the spread of disease, the growth of cities, and the spread of forest fires.
+* Simulating physical systems, such as the growth of crystals, and fluid dynamics.
 * Solving optimization problems
-* Generating fractals
 * Creating art, music, and other forms of entertainment
-* Creating computer games, such as Conway's Game of Life
+* Developing computer games, such as Conway's Game of Life
 
 ## Why did I choose to do this project?
 I chose to create this CA engine because I have always been interested in the concept of cellular automata, and I wanted to learn more about them.
