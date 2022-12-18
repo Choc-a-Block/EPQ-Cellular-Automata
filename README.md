@@ -1,21 +1,20 @@
 # Project
 My EPQ project is to create a cellular automaton simulation engine using python.
 
-## What is a cellular automaton?
-A cellular automaton is a discrete model studied in computability theory and mathematical physics.
-It consists of a regular grid of cells, each in one of a finite number of states, such as on and off.
-The grid can be in any finite number of dimensions. For each cell, a set of cells called its neighborhood is defined relative to the specified cell.
-An initial state (time t = 0) is selected by assigning a state for each cell.
-A new generation is created (advancing t by 1), according to some fixed rule (generally, a mathematical function) that determines the new state of each cell in terms of the current state of the cell and the states of the cells in its neighborhood.
-Typically, the rule for updating the state of cells is the same for each cell and does not change over time, and is applied to the whole grid simultaneously.
-These rules can be used to model simple natural phenomena, such as the growth of patterns in the sand or the behavior of an automaton-like computer program.
+## What are cellular automata simply?
+Cellular automata are a type of discrete model that can be used to simulate complex systems.
+They are made up of a grid of cells, each of which can be in one of a finite number of states (usually, these are normalised between 0 and 1).
+The grid can be in any number of dimensions, but the most common are 1D, 2D and 3D.
+The cells are updated according to a set of rules that are applied to each cell and its neighbours.
+The rules are applied simultaneously to all cells, and the new state of each cell is determined by the old state of itself and its neighbours.
+The rules are applied repeatedly, and the system evolves over time.
 
 ## What are the applications of cellular automata?
 
 Cellular automata can be used for a variety of purposes, including:
 * Modeling complex systems, such as the spread of disease, the growth of cities, and the spread of forest fires.
 * Simulating physical systems, such as the growth of crystals, and fluid dynamics.
-* Solving optimization problems
+* Solving optimisation problems
 * Creating art, music, and other forms of entertainment
 * Developing computer games, such as Conway's Game of Life
 
