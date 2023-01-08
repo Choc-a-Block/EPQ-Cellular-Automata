@@ -1,6 +1,7 @@
-import plotly as pl
 import numpy as np
 from scipy import signal
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 
 class Grid:
@@ -30,43 +31,29 @@ class Grid:
         self.grid = np.clip(
             self.grid + self.growth(signal.convolve2d(self.grid, self.KERNEL, mode='same', boundary='wrap')), 0, 1)
 
-
-# a function to animate the grid. show the grid moving in a plotly graph
-def animate_grid(grid, steps=100):
-    # create a list of frames
+if __name__ == "__main__":
     frames = []
-    for i in range(steps):
-        frames.append(pl.graph_objects.Frame(data=pl.graph_objects.Heatmap(z=grid.grid)))
-        grid.next_gen()
-    # create the figure
-    fig = pl.graph_objects.Figure(
-        data=pl.graph_objects.Heatmap(z=grid.grid),
-        layout=pl.graph_objects.Layout(
-            xaxis=dict(range=[0, grid.shape[1]], autorange=False),
-            yaxis=dict(range=[0, grid.shape[0]], autorange=False),
-            title_text="Conway's Game of Life",
-            updatemenus=[dict(
-                type="buttons",
-                buttons=[dict(label="Animate",
-                              method="animate",
-                              args=[None])])]),
-        frames=frames)
-    fig.show()
-
-
-if __name__ == '__main__':
-    # animate this array by calling the grid.next_gen() function
-    grid = Grid(shape=(10, 10), boundary="wrap")
-    # define the initial state of the grid
-    grid.define_1(1, 1)
-    grid.define_1(1, 2)
+    grid = Grid(shape=(50, 50))
+    # Define the initial state as a glider
+    grid.define_1(1, 0)
     grid.define_1(2, 1)
+    grid.define_1(0, 2)
+    grid.define_1(1, 2)
     grid.define_1(2, 2)
-    grid.define_1(3, 3)
-    grid.define_1(3, 4)
-    grid.define_1(4, 3)
-    grid.define_1(4, 4)
-    grid.define_1(5, 5)
-    grid.define_1(5, 6)
+    for i in range(100):
+        grid.next_gen()
+        frames.append(grid.grid)
+    # Set up the figure and subplot
+    fig, ax = plt.subplots()
+    print(frames)
+    # Set up formatting for the movie files
+    Writer = animation.writers['ffmpeg']
+    writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
-    animate_grid(grid, steps=100)
+    # This function will be called for each frame in the video
+    def update_frame(num):
+        ax.imshow(frames[num], cmap='gray')
+
+    # Create the video
+    ani = animation.FuncAnimation(fig, update_frame, frames=range(len(frames)), repeat=True)
+    ani.save('video.mp4', writer=writer)
