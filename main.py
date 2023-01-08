@@ -31,10 +31,10 @@ class Grid:
         self.grid = np.clip(
             self.grid + self.growth(signal.convolve2d(self.grid, self.KERNEL, mode='same', boundary='wrap')), 0, 1)
 
+
 if __name__ == "__main__":
     frames = []
     grid = Grid(shape=(50, 50))
-    # Define the initial state as a glider
     grid.define_1(1, 0)
     grid.define_1(2, 1)
     grid.define_1(0, 2)
@@ -50,10 +50,10 @@ if __name__ == "__main__":
     Writer = animation.writers['ffmpeg']
     writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
-    # This function will be called for each frame in the video
+
     def update_frame(num):
         ax.imshow(frames[num], cmap='gray')
 
-    # Create the video
+
     ani = animation.FuncAnimation(fig, update_frame, frames=range(len(frames)), repeat=True)
     ani.save('video.mp4', writer=writer)
