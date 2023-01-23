@@ -25,7 +25,7 @@ class Grid:
 
     @staticmethod
     def growth(U):
-        return np.where(U == 3, 1, 0)
+        return 0 + (U == 3) - ((U < 2) | (U > 3))
 
     def next_gen(self):  # Determine a cell's state by it's neighbour count
         self.grid = np.clip(
@@ -45,6 +45,7 @@ if __name__ == "__main__":
         frames.append(grid.grid)
     # Set up the figure and subplot
     fig, ax = plt.subplots()
+    ax.set_title("Game of Life")
     print(frames)
     # Set up formatting for the movie files
     Writer = animation.writers['ffmpeg']
@@ -52,7 +53,7 @@ if __name__ == "__main__":
 
 
     def update_frame(num):
-        ax.imshow(frames[num], cmap='gray')
+        ax.imshow(frames[num], cmap='Blues')
 
 
     ani = animation.FuncAnimation(fig, update_frame, frames=range(len(frames)), repeat=True)
