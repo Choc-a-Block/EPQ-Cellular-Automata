@@ -1,0 +1,14 @@
+% -----------------------------------------
+
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{C}{Mathematical Representations}{%
+  \ifstrequal{#1}{N}{Encoding Formats}{%
+  \ifstrequal{#1}{O}{Other symbols}{}}}%
+]}
+% -----------------------------------------
+
+
+\nomenclature[C]{$\ker(\alpha)$}{The Kernel of $\alpha$}
+\nomenclature[C]{$(f * g)(t) := \int_{-\infty}^\infty f(\tau) g(t - \tau) \, d\tau.$}{Convolution of $f$ and $g$}
+\nomenclature[N]{\verb|x = 3, y = 3 bo$2bo$3o|}{Run Length Encoding Formatting of a CA Grid}

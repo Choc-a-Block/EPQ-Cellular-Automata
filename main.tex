@@ -1,0 +1,144 @@
+\documentclass[twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{lipsum}
+\usepackage[
+    backend=biber,
+    style=ieee,
+  ]{biblatex}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{emptypage}
+\usepackage{glossaries}
+\usepackage{nomencl}
+\usepackage{amssymb}
+\usepackage{etoolbox}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage{titlesec, blindtext, color}
+
+
+
+\makeindex
+\makeglossaries
+\makenomenclature
+
+\addbibresource{ref.bib}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{gre}{RGB}{101, 191, 127}
+\definecolor{gree}{RGB}{7, 135, 44}
+\definecolor{gray75}{gray}{0.75}
+
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\newtcolorbox{definition}{colback=green!10,enhanced,title=Definition,
+	attach boxed title to top left={xshift=-4mm},boxrule=0pt,after skip=1cm,before skip=1cm,right skip=0cm,breakable,fonttitle=\bfseries,toprule=0pt,bottomrule=0pt,rightrule=0pt,leftrule=4pt,arc=0mm,skin=enhancedlast jigsaw,sharp corners,colframe=gree,colbacktitle=gre,boxed title style={
+		frame code={ 
+			\fill[gre](frame.south west)--(frame.north west)--(frame.north east)--([xshift=3mm]frame.east)--(frame.south east)--cycle;
+			\draw[line width=1mm,gre]([xshift=2mm]frame.north east)--([xshift=5mm]frame.east)--([xshift=2mm]frame.south east);
+			
+			\draw[line width=1mm,gre]([xshift=5mm]frame.north east)--([xshift=8mm]frame.east)--([xshift=5mm]frame.south east);
+			\fill[green!40](frame.south west)--+(4mm,-2mm)--+(4mm,2mm)--cycle;
+		}
+	}
+}
+\newtcolorbox{fact}{colback=blue!10, colbacktitle=white, title=Important, coltitle=black,colframe=blue!40,boxsep=2mm,enhanced,attach boxed title to top center = {yshift=-3.8mm}, boxed title style={frame code={
+\draw[tcb fill
+frame, blue!40]([xshift=-4mm]frame.west)--(frame.north west)--(frame.north east)--([xshift=4mm]frame.east)--(frame.south east)--(frame.south west)--([xshift=-4mm]frame.west);
+},
+interior code={
+\draw[tcb fill
+interior]([xshift=-2mm]frame.west)--(frame.north west)--(frame.north east)--([xshift=2mm]frame.east)--(frame.south east)--(frame.south west)--([xshift=-2mm]frame.west);
+}
+}}
+\newgeometry{
+top=0.75in,
+bottom=0.75in,
+outer=0.75in,
+inner=0.75in}
+
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \thechapter.\
+    \fi
+    \interlinepenalty\@M
+    #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+\newcommand{\hsp}{\hspace{20pt}}
+\renewcommand\lstlistlistingname{Code}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\renewcommand*\contentsname{Table of Contents}
+
+\begin{document}
+\pagestyle{fancy}
+\title{How Cellular Automata has contributed to the study of complex systems in today’s society}
+\author{Olivier Hinds}
+\date{2022 / 2023}
+\maketitle
+
+
+
+\include{abstract.tex}
+\tableofcontents
+\listoffigures
+
+
+\include{ch1}
+\include{ch2}
+\include{ch3}
+\include{ch4}
+\include{ch5}
+\include{ch6}
+\include{ch7}
+\include{ch8}
+\include{ch9}
+\lstlistoflistings
+
+
+\clearpage
+
+
+\include{glossary}
+\printglossary
+\printindex
+\include{nomenclatures}
+\printnomenclature
+\printbibliography
+\appendix
+\include{Appendix.tex}
+
+\end{document}
